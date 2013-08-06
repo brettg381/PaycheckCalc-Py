@@ -1,0 +1,102 @@
+#invoice {
+	margin: 0 auto;
+	width: 505px;
+	height: 587px;
+	position: relative;
+	color: #666;
+
+	& > inner { padding: 60px 20px 20px 40px;}
+	.header {
+		background: url(../img/invoice_head.png) bottom center no-repeat;
+		height: 205px;
+		position: relative;
+		.date {
+			text-align: right;
+			padding: 30px 40px;
+			font-weight: bold;		
+			margin-bottom: 28px;
+		}
+		
+		.employee {
+			float: left;
+			font-size: 22px;
+			margin-left: 100px;
+		}
+		
+		.pay {
+			float: right;
+			margin-right: 40px;
+			font-size: 28px;
+			color: #6C8597;
+		}
+	}
+	
+	.body {
+		min-height: 349px;
+		background: url(../img/invoice_bg.png) top center repeat-y;
+	}
+	
+	.bottom {
+		height: 32px;
+		background: url(../img/invoice_bottom.png) top center no-repeat;
+	}
+	
+	.table-wrapper {
+		margin: 0 20px;
+	}
+	
+	table {
+		width: 100%;
+		font-size: 12px;
+		text-align: left;
+		margin: 0 0 10px;
+		
+		.al-right {
+			text-align: right;
+		}
+		
+		th {
+			color: #6D8BA7;
+			border-bottom: 1px solid #C1DBEC;
+			text-transform:uppercase;
+		}
+		
+		.first {
+			padding: 4px 0 4px 10px;
+		}
+	}
+	
+	table.total {
+		font-weight: bold;
+		border-top: 1px solid #8A9EAE;
+		border-bottom: 1px solid #8A9EAE;
+		margin: 20px 0 0;
+
+		.first {
+			padding: 10px 0 10px 10px;
+		}
+	}
+	
+	.accordion {
+		background-color: transparent;
+		font-size: 12px;
+		padding: 0 20px;
+	
+		h4 {
+			color: #6C8597;
+			text-transform:uppercase;
+			font-size: 12px;
+		}	
+	}
+}
+
+#calculator-result 	.backdrop {
+	opacity: 0.6;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: #FFF;
+}	
+

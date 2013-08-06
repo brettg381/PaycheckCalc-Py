@@ -1,0 +1,120 @@
+//
+// Accordion
+// --------------------------------------------------
+
+
+// Parent container
+.accordion {
+  margin-bottom: @baseLineHeight;
+  overflow: auto;
+  background: #fff;  
+}
+
+// Group == heading + body
+.accordion-group {
+  margin-bottom: 2px;
+  border-top: 1px solid #e5e5e5;
+}
+.accordion-heading {
+  border-bottom: 0;
+
+  .form_help {
+	float: right;
+	margin: 15px 20px 0 0;  
+  }
+}
+.accordion-heading .accordion-toggle {
+  display: block;
+  padding: 8px 15px;
+}
+
+// General toggle styles
+.accordion-toggle {
+  cursor: pointer;
+  padding: 12px 0;
+  color: #515151;
+  text-decoration: none!important; 
+
+  h4 {
+    padding-left: 20px;
+    font-size: 11pt;
+    font-weight: bold;
+  }
+
+  &:hover {
+    color: #111;
+  }
+  
+}
+
+// Inner needs the styles because you can't animate properly with any styles on the element
+.accordion-inner {
+  padding: 9px 15px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.in .accordion-inner {
+  border-top: none;
+}
+
+
+.form_title {
+  padding-left: 20px;
+  background: url(../img/sprites.png) no-repeat top left;
+  background-position: 0 -52px;
+}
+
+.collapsed .form_title {
+  background-position: 0 6px;
+}
+
+.collapsed.disabled .form_title {
+  color: #CCC;
+  background-position: 0 -115px;
+}
+
+.form_active {
+  background: url(../img/accordion_on.png) no-repeat left 6px !important;
+}
+
+.accordion input[type="text"] {
+  float: left;
+  width: 120px;
+  margin-right: 10px;
+}
+
+.accordion input.input_pre {
+  width: 95px;
+}
+
+.accordion select {
+  float: left;
+  width: 175px;
+  margin-right: 10px;
+}
+
+.form_line {
+  display: table;
+  min-height: 20px;
+  margin: 8px 0;
+}
+
+.form_line span {
+  float: left;
+  margin: 6px 10px 0 0;
+  overflow: hidden;
+}
+
+#not-supported {
+	.accordion-group {
+		padding: 20px;
+	}
+	
+	.not-supported-form {
+		margin-top: 20px;
+		input {
+			margin: 0
+		}
+	}
+}
+

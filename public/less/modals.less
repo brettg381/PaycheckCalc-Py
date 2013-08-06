@@ -1,0 +1,222 @@
+//
+// Modals
+// --------------------------------------------------
+
+// Background
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: @zindexModalBackdrop;
+  background-color: @black;
+  // Fade for backdrop
+  &.fade { opacity: 0; }
+  
+  & > .wait {
+	display: inline-block;
+	color: white;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -100px;
+  }
+}
+
+.modal-backdrop,
+.modal-backdrop.fade.in {
+  .opacity(80);
+}
+
+// Base modal
+.modal {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  z-index: @zindexModal;
+  width: 600px;
+  margin-left: -300px;
+  background-color: @white;
+  border: 1px solid #999;
+  border: 1px solid rgba(0,0,0,.3);
+  *border: 1px solid #999; /* IE6-7 */
+  .border-radius(6px);
+  .box-shadow(0 3px 7px rgba(0,0,0,0.3));
+  .background-clip(padding-box);
+  // Remove focus outline from opened modal
+  outline: none;
+
+  &.fade {
+    .transition(e('opacity .3s linear, top .3s ease-out'));
+    top: -25%;
+  }
+  &.fade.in { top: 10%; }
+  
+  .btn-ok {
+  	padding: 4px 40px;
+  }
+  
+  .result-info {
+  	font-weight: bold;
+  }
+  
+  .modal-legend {
+  	padding : 20px 0;
+  }
+  
+  form label {
+  	font-weight: bold;
+  	
+  	small {
+		display: block;
+		font-size: 13px;
+		color: #999;
+		font-weight: normal;
+		font-style: italic;
+	}
+  }
+  
+  button[type=submit] {
+	padding: 4px 20px;
+	font-weight: bold;
+  }
+}
+.modal-header {
+  padding: 9px 15px;
+  // Close icon
+  .close { margin-top: 2px; }
+  // Heading
+  h3 {
+  	font-weight: 100;
+  	padding: 20px 0 10px 20px;
+    margin: 0;
+    line-height: 30px;
+  }
+  
+  p.info {
+	margin-left: 20px;
+	font-weight: bold; 
+	color: #666;
+  }
+}
+
+// Body (where all modal content resides)
+.modal-body {
+  position: relative;
+  overflow-y: auto;
+  max-height: 400px;
+  padding: 0 15px 15px 15px;
+}
+// Remove bottom margin if need be
+.modal-form {
+  margin-bottom: 0;
+}
+
+// Footer (for actions)
+.modal-footer {
+  padding: 14px 15px 15px;
+  margin-bottom: 0;
+  text-align: right; // right align buttons
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+  .border-radius(0 0 6px 6px);
+  .box-shadow(inset 0 1px 0 @white);
+  .clearfix(); // clear it in case folks use .pull-* classes on buttons
+
+  // Properly space out buttons
+  .btn + .btn {
+    margin-left: 5px;
+    margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+  }
+  // but override that for button groups
+  .btn-group .btn + .btn {
+    margin-left: -1px;
+  }
+  // and override it for block buttons as well
+  .btn-block + .btn-block {
+    margin-left: 0;
+  }
+}
+
+#AccountantModal {
+	width: 640px;
+	
+	h3 {
+		margin-bottom: 30px;	
+	}
+	
+	textarea {
+		width: 380px;
+	}
+}
+
+#ContactModal {
+	width: 640px;
+	
+	.form-line label {
+		width: 100px;
+	}	
+	form p.spaced {
+		margin-left: 110px;
+	}
+	textarea {
+		width: 380px;
+	}
+}
+
+#LoginModal {
+	width: 450px;
+	margin-left: -225px;
+
+	.form-line {  
+		label {
+			width: 100px;
+		}
+
+		span.checkbox {
+			padding-right: 0;
+			margin: 0 0 0 110px;
+			font-size: 13px;
+			width: 100px;
+		}
+		
+		.error {
+			margin-left: 110px;
+			display:block;
+		}
+	}	
+	
+	.cta-reset {
+		font-size:12px;
+	}
+
+	form p.spaced {
+		margin-left: 110px;
+		color: #A5A5A5;
+		font-size: 13px;
+	}
+
+}
+
+#RegistrationModal {
+	.help-input {
+		margin-bottom: 30px;
+	}
+}
+
+#SavePaycheckModal {
+	.history table {
+		width: 100%;
+		margin-top: 10px;
+	}
+	
+	.actions {
+		margin-top: 10px;
+		text-align: center;
+		
+		.btn {
+			padding: 4px 40px;
+		}
+	}
+}

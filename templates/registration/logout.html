@@ -1,0 +1,18 @@
+{% extends "base_account.html" %}
+{% load i18n %}
+
+{% block content %}
+<section id="calculator-input">
+	<div class="section-inner">
+		<h1>{% trans "Logged out" %}</h1>
+	</div>
+</section>
+{% endblock %}
+
+{% block extra_script %}
+<script type="text/javascript">
+$(document).ready(function() {
+	_gaq.push(['_trackEvent', 'User', 'Logout']);	
+})
+</script>
+{% endblock %}

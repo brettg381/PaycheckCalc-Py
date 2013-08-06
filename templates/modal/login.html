@@ -1,0 +1,66 @@
+<div id="LoginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
+	<div class="input">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="LoginModalLabel">Good to see you again!</h3>
+		</div>
+		<form id="login-form" method="post" action="{% url 'auth_login_async' %}">
+			<div class="modal-body">
+		    	<div class="alert alert-error" style="display:none">
+		    		<button type="button" class="close" data-dismiss="alert">×</button>
+		    		<strong>Oh snap!</strong> Change a few things up and try submitting again.
+		    	</div>
+		    	{% include "snippets/form.html" with legend='' form=login_form %}
+		    	<div class="form-line">
+					<span class="checkbox"><input type="checkbox"> Remember me</span>
+					<a href="{% url 'auth_password_reset' %}">Forgot Password?</a>
+					<!-- <a href="#" class="cta-reset">Forgot Password?</a> -->
+				</div>
+				<div class="form-line">
+		    	<p class="spaced">
+					<button id="btn-signin" type="submit" class="btn btn-primary disabled">Sign In</button>
+					<button class="btn" data-dismiss="modal" aria-hidden="true" style="margin-left:10px;">Cancel</button>
+				</p>
+				</div>
+ 				<p class="spaced">First time here?<br> <a class="cta-signup" href="#">Sign Up</a> to calculate and save checks!</p> 
+		  </div>
+		</form>
+	</div>
+	<div class="reset-password hide">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="ResetModalLabel">Forgot your password? Reset it!</h3>
+		</div>
+		<form id="reset-form" method="post" action="{% url 'auth_login_async' %}">
+			<div class="modal-body">
+		    	<div class="alert alert-error" style="display:none">
+		    		<button type="button" class="close" data-dismiss="alert">×</button>
+		    		<strong>Oh snap!</strong> Change a few things up and try submitting again.
+		    	</div>
+		    	{% include "snippets/form.html" with legend='' form=reset_form %}
+				<div class="form-line">
+		    	<p class="spaced">
+					<button id="btn-reset" type="submit" class="btn btn-primary">Reset</button>
+					<button class="btn" data-dismiss="modal" aria-hidden="true" style="margin-left:10px;">Cancel</button>
+				</p>
+				</div>
+				<p class="spaced">Returning user? <a class="cta-signin" href="#">Sign In</a></p>
+		  </div>
+		</form>
+	</div>	
+	<div class="reset-password-complete hide">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		</div>
+		<div class="modal-body" style="text-align:center">
+			<div class="modal-legend">
+				<img src="{{STATIC_URL}}img/big_check.png"  alt="Check" />
+				<h4>Woohoo! Your password has been reset</h4>
+			</div>
+			<p><strong>Check your email and follow the instructions.</strong></p>
+			<p>
+				<button class="btn btn-primary btn-ok" data-dismiss="modal" aria-hidden="true">OK</button>
+			</p>
+		</div>
+	</div>	
+</div>	

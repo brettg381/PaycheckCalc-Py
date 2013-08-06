@@ -1,4 +1,7 @@
 *.log
 *.pot
 *.pyc
-local_settings.py
+settings_local.py
+sqlite.db
+.DS_Store
+static

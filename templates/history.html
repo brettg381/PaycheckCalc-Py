@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load currency %}
+
+{% block content %}
+
+<div class="section-inner history">
+
+{% if user.is_authenticated %}
+	<h1>Here are all of the paychecks you have calculated and saved.</h1>
+	<p class="delete-message">If you would like to delete a  check, please <a href="#ContactModal" role="button" data-toggle="modal">Contact Us</a> and let us know which one.</p>
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th width="20%">Pay Date <span class="caret"></span></th>
+			<th width="40%">Employee</th>
+			<th width="25%" class="amount">Net Pay Amount</th>
+			<th width="15%" class="detail">Details</th>
+		</tr>
+	</thead>
+	<tbody>
+{% for inv in invoices %}
+		<tr>
+			<td class="id hidden">{{inv.id}}</td>
+			<td>{{inv.pay_date|date:"m/d/Y"}}</td>
+			<td>{{inv.entry.employee.name}}</td>
+			<td class="amount"><strong>$ {{inv.net_pay | currency}}</strong></td>
+			<td class="detail"><a href="#"><img src="{{STATIC_URL}}img/detail_icon.png" /></a></td>
+		</tr>
+{% endfor %}
+	</tbody>
+</table>
+
+{% else %}
+	<h1>You haven’t calculated any paychecks yet!</h1>
+	<p class="info-1"><a href="{% url 'calculator' %}">Calculate your first paycheck</a> to get started!</p>  
+	<p class="info-2">Or, <a href="#LoginModal" role="button" data-toggle="modal">Sign In</a> to view your saved history.</p>
+{% endif %}
+</div>
+
+{% include 'calculator/calculator_result.html'  %}
+{% include 'modal/invoice.html' %}
+{% endblock %}
+
+{% block extra_script %}
+{% if user.is_authenticated %}	
+
+<script src="{{STATIC_URL}}js/vendor/hogan-2.0.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	var invoices = [
+{% for inv in invoices %}
+				{	
+					id: {{inv.id}},
+					employee: "{{inv.entry.employee.name}}",
+					pay_date: '{{inv.pay_date|date:"m/d/Y"}}',
+					net_pay: "{{inv.net_pay|currency}}",
+					pay_rate_hs: "{{inv.pay_rate_hs|currency}}",
+				    hours_total: {{inv.hours_total}},
+				    hours_worked: {{inv.hours_worked}},
+				    gross_pay: "{{inv.gross_pay|currency}}",
+				    salary: {% if inv.salary %}"{{inv.salary|currency}}"{% else %}0{%endif%},
+				    bonus: {% if inv.bonus %}"{{inv.bonus|currency}}"{% else %}0{%endif%},
+				    commission: {% if inv.commission %}"{{inv.commission|currency}}"{% else %}0{%endif%},
+				    ot_hours_worked: {% if inv.ot_hours_worked %}"{{inv.ot_hours_worked|currency}}"{% else %}0{%endif%},
+				    ot_pay_rate_hs: {% if inv.ot_pay_rate_hs %}"{{inv.ot_pay_rate_hs|currency}}"{% else %}0{%endif%},
+				    ot_total: {% if inv.ot_total %}"{{inv.ot_total|currency}}"{% else %}0{%endif%},
+				    
+				    taxes: [
+						{% for tax in inv.resulttaxdata_set.all %}
+				    	{
+				    		name: "{{tax.name}}",
+				    		amount: "{{tax.amount|currency}}"
+				    	},
+				    	{% endfor %}
+				    ]
+				},
+{% endfor %} 	
+		]	
+	$('tr a').click(function() {
+
+		var tr = $(this).closest('tr'),
+			sel_id = $('.id', tr).html()
+		for (var i = 0; i < invoices.length; i++) {
+		    if (invoices[i].id == sel_id) {
+				tpl = Hogan.compile(document.querySelector('#calculator-result-tpl').innerHTML);
+				$('#InvoiceModal .modal-body').html(tpl.render(invoices[i]));		
+				$('#InvoiceModal').modal();		    
+		    }
+ 		}
+	});	
+	_gaq.push(['_trackEvent', 'User', 'History']);
+	_gaq.push(['_trackEvent', window.username, 'History']);
+})
+</script>
+{% else %}
+<script type="text/javascript">
+$(document).ready(function() {
+	_gaq.push(['_trackEvent', 'Anonymous', 'History']);	
+})
+</script>
+
+{% endif %}
+{% endblock %}
+

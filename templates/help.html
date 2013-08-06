@@ -1,0 +1,311 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Paycheck Calculator</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<link href="{{STATIC_URL}}css/intuit.css" rel="stylesheet" type="text/css" media="screen"/>
+</head>
+<body id="help">
+
+<div id="intuit_main">
+	<img src="{{STATIC_URL}}img/intuit_main.jpg" />
+</div>
+
+<div id="main_wrapper">
+<div id="main" class="row-fluid">
+	<div class="span12">
+		<div class="left_column">
+			<div class="left_top">
+				<h1>Help</h1>
+			</div>
+			<div class="left_bottom help_text">
+				<p>Got questions about our Paycheck Calculator? We’ve got answers!</p>
+			</div>
+			<div id="state" class="help-section">
+				<h3 class="help-toggle-header">State</h3>
+				<div class="help-section-content">
+					<div class="help-section-internal-content">
+						<strong>Why do I have to pick a state?</strong>
+						<p>It’s super important to choose your state first so that the calculator can include the state taxes (and local taxes, if any) that must be withheld from an employee’s paycheck. We can calculate paychecks only for employees who live and work in the same state.</p>
+					</div>
+					<div class="help-section-internal-content">
+						<strong>What taxes am I responsible for?</strong>
+						<p>As an employer, you’re responsible for the following:</p>
+						<p>Employee Taxes — We calculate employee taxes for you on paychecks. Employee taxes can include federal, Social Security, Medicare and, in many states, state income or disability taxes. Additionally, some employees owe local taxes depending on their location of residence or worksite location. You report and pay these to the government agencies on your employee’s behalf.</p>
+						<p>Employer Taxes — As an employer, you’re also responsible for some additional taxes that we do not calculate, including the employer’s portion of Social Security and Medicare, federal unemployment (FUTA) and, in many states, state unemployment (SUI). You report and pay these to the government agencies.</p>
+					</div>
+				</div>
+			</div>
+			<div id="pay-information" class="help-section">
+				<h3 class="help-toggle-header">Pay Information</h3>
+				<div class="help-section-content">
+					<div class="help-section-internal-content">
+						<h4>Pay Date</h4>
+						<strong>Can I enter dates in the future or dates from last year?</strong>
+						<p>Yes and yes! As long as the future date is within the same calendar year – we don’t know the 2014 tax rates yet. (You can calculate checks farther in the future, but we can’t be sure the taxes will be accurate.) Past dates should be accurate for the last 5 years.</p>
+					</div>
+					<div class="help-section-internal-content">
+						<h4>Pay Period</h4>
+						<strong>Why do I have to pick a pay period?</strong>
+						<p>It’s important to use a consistent and reliable pay schedule so that tax calculations are correct. Taxes calculated for a weekly check, for example, will come out slightly different than a biweekly check. It also helps you keep payroll taxes and accounting straight throughout the year.</p>
+						<strong>Why don’t you offer more pay periods like monthly or quarterly?</strong>
+						<p>We’d love to, but our crew of developers is pretty small! Unfortunately, if you pay someone quarterly, annually or by project, your tax calculations won’t be correct using our calculator.</p>
+					</div>
+					<div class="help-section-internal-content">
+						<h4>Pay Type</h4>
+						<strong>What about overtime, bonuses, and commissions?</strong>
+						<p>You can find them in the next section under Additional Pay. (Please keep in mind, if you pay someone annually or by project, your tax calculations won’t be correct using our calculator.)</p>
+						<strong>What about deductions like garnishments or health insurance?</strong>
+						<p>Sorry, but we don’t cover deductions! If you really need deductions and contributions, you should try one of our <a href="http://payroll.intuit.com" target="_blank">Intuit Payroll options</a>.</p>
+					</div>
+					<div class="help-section-internal-content">
+						<h4>Hourly – Hours Worked</h4>
+						<strong>How do I enter overtime hours?</strong>
+						<p>In the Hours Worked box, enter the regular hours. Then click Additional Pay, and enter the remaining overtime hours. (For more info, see Additional Pay section.)</p>
+					</div>
+					<div class="help-section-internal-content">
+						<h4>Hourly – Pay Rate</h4>
+						<strong>Can I enter other pay rates?</strong>
+						<p>We support hourly pay rates only. Sorry, no per diem (per day), per unit, or project rates.</p>
+					</div>
+					<div class="help-section-internal-content">
+						<h4>Salaried – Pay Amount</h4>
+						<strong>Should I enter only the gross salary amount for this pay period?</strong>
+						<p>Yes! That’s perfect. We’ll calculate all the taxes and show you the net check amount.</p>
+					</div>
+					<div class="help-section-internal-content">
+						<h4>Gross YTD (Year-to-Date)</h4>
+						<strong>What if I don’t have the gross year-to-date amount?</strong>
+						<p>If you don’t enter the year-to-date amount, our calculator might calculate too much tax. Some state and federal taxes have an annual maximum amount for earned income, also called a ‘wage base’. Once an employee reaches the annual maximum, they don’t need to pay any more of that tax for the remainder of the year. For example, the Social Security tax wage base is $113,700 for 2013. If your employee has already earned more than that amount year-to-date, then they don’t need to pay any more Social Security until the next tax year begins. Without a year-to-date amount, our calculator won’t know if a maximum has been reached.</p>
+					</div>
+				</div>
+			</div>
+			<div id="additional-pay" class="help-section">
+				<h3 class="help-toggle-header">Additional Pay</h3>
+				<div class="help-section-content">
+					<div class="help-section-internal-content">
+						<strong>How do I know which hours are overtime?</strong>
+						<p>In general, if you chose weekly for the pay period, enter up to 40 hours in the Hours Worked field, then enter the remaining overtime hours in Additional Pay > Overtime worked. If you chose biweekly for the pay period, you would pay overtime based on a 40 hour work week for each separate week. Any hours worked over 40 in a single week would be overtime hours.</p>
+						<p>Each state has its own laws and guidelines that determine normal and overtime hours. For details about the overtime laws in your state, check the <a href="http://www.dol.gov/whd/contacts/state_of.htm" target="_blank">state labor agency list</a>.</p>
+					</div>
+					<div class="help-section-internal-content">
+						<strong>How is overtime calculated?</strong>
+						<p>Our calculator uses an overtime rate of 1.5 times the employee’s regular pay rate for every overtime hour worked. (Double-time is not supported.)</p>
+					</div>
+					<div class="help-section-internal-content">
+						<strong>How are commission and bonuses calculated?</strong>
+						<p>Bonuses and commissions are added to, and calculated with, the employee’s regular pay. For example, let’s say an employee works 40 hours during a pay period and also gets a $100.00 sales commission. When you create the employee’s paycheck, you enter 40 hours worked and enter $100.00 in the commission field. The calculator adds the $100.00 commission amount to the employee’s regular pay when calculating the employee’s paycheck.</p>
+					</div>
+					<div class="help-section-internal-content">
+						<strong>What about reimbursing employees for expenses?</strong>
+						<p>Since most reimbursements aren’t considered wages, they aren’t generally taxed or included on employee paychecks.</p>
+					</div>
+				</div>
+			</div>
+			<div id="federal-withholdings" class="help-section">
+				<h3 class="help-toggle-header">Federal Withholdings</h3>
+				<div class="help-section-content">
+					<div class="help-section-internal-content">
+						<strong>How do I know what to enter for these questions?</strong>
+						<p>Have your employees fill out the <a href="http://www.irs.gov/pub/irs-pdf/fw4.pdf" target="_blank">federal W-4 form</a> (PDF) and your state’s withholding form. (If there is one; many states don’t have separate forms. Check the State Withholding section for more info.). The filing status and the allowances or exemptions entered on the form(s) help us figure out federal and state taxes. Remember to keep the completed forms in your company records.</p>
+					</div>
+					<div class="help-section-internal-content">
+						<strong>What if my employee hasn’t filled out the form yet?</strong>
+						<p>You can still calculate paychecks. Until you have a completed form from your employee, we’ll use the highest agency default rates when calculating your employee’s paycheck.</p>
+					</div>
+					<div class="help-section-internal-content">
+						<strong>What if my employee says they don’t have to pay taxes?</strong>
+						<p>If your employee writes 'Exempt' in box 7, then no federal income taxes are withheld. (Exempt employees, with just a few exceptions, will still continue to pay Social Security and Medicare taxes.) Different states use different terminology for employees who do not need to pay taxes. Some states use 'zero percent' or 'exempt'. If your employee claims zero percent or exempt status, choose Do Not Withhold for their federal and state filing status. If you’re not sure or don’t have the forms, choose a filing status like Single instead.</p>
+					</div>
+				</div>
+			</div>
+			<div id="state-withholdings" class="help-section">
+				<h3 class="help-toggle-header">State (and Local) Withholdings</h3>
+				<div class="help-section-content">
+					<div class="help-section-internal-content">
+						<strong>Why do you ask location questions like where my employee lives or works?</strong>
+						<p>For many states, counties, and localities, this information is required for accurate paychecks. (If it wasn’t required, we promise we wouldn’t ask!) Knowing where your employee lives or works helps us to calculate local taxes.</p>
+					</div>
+					<div class="help-section-internal-content">
+						<strong>What if my employee hasn’t filled out the state withholding form yet?</strong>
+						<p>You can still calculate paychecks. Until you have a completed form from your employee (only for state’s where they’re required), we’ll use the highest agency default rates when calculating your employee’s paycheck.</p>
+					</div>
+					<div class="help-section-internal-content state">
+						<h4>Alaska</h4>
+						<div class="state-content-wrapper">
+							<strong>Does Alaska have a state withholding form?</strong>
+							<p>The State of Alaska does not have an individual income tax, so there is no Alaska withholding form.</p>
+							<p>If you need more information on unemployment taxes, or workers compensation, check out the <a href="http://www.labor.state.ak.us/home.htm" target="_blank">Alaska Department of Labor</a>.</p>
+						</div>
+					</div>
+					<div class="help-section-internal-content state">
+						<h4>Arizona</h4>
+						<div class="state-content-wrapper">
+							<strong>How can I find the AZ state withholding form?</strong>
+							<p><a href="http://www.azdor.gov/LinkClick.aspx?fileticket=tI6Zewj80hg%3d&amp;tabid=265&amp;mid=921" target="_blank">Get the Arizona state withholding form A-4</a>. (PDF)</p>
+						</div>
+					</div>
+					<div class="help-section-internal-content state">
+						<h4>California</h4>
+						<div class="state-content-wrapper">
+							<strong>How can I find the CA state withholding form?</strong>
+							<p><a href="http://www.edd.ca.gov/pdf_pub_ctr/de4.pdf" target="_blank">Get the California state withholding form DE-4</a>. (PDF)</p>
+						</div>
+					</div>
+					<div class="help-section-internal-content state">
+						<h4>Florida</h4>
+						<div class="state-content-wrapper">
+							<strong>Does Florida have a state withholding form?</strong>
+							<p>The State of Florida does not have an employee withholding tax, so there is no withholding form.</p>
+						</div>
+					</div>
+					<div class="help-section-internal-content state">
+						<h4>Georgia</h4>
+						<div class="state-content-wrapper">
+							<strong>How can I find the GA state withholding form?</strong>
+							<p><a href="https://etax.dor.ga.gov/inctax/withholding/TSD_Employees_Withholding_Allowance_Certificate_G4.pdf" target="_blank">Get the Georgia state withholding form G-4</a>. (PDF)</p>
+						</div>
+					</div>
+					<div class="help-section-internal-content state">
+						<h4>Illinois</h4>
+						<div class="state-content-wrapper">
+							<strong>How can I find the IL state withholding form?</strong>
+							<p><a href="http://tax.illinois.gov/taxforms/withholding/il-w-4.pdf" target="_blank">Get the Illinois state withholding form IL-W-4. (PDF)</a></p>
+						</div>
+					</div>
+					<div class="help-section-internal-content state">
+						<h4>Louisiana</h4>
+						<div class="state-content-wrapper">
+							<strong>How can I find the LA state withholding form?</strong>
+							<p><a href="http://www.revenue.louisiana.gov/forms/taxforms/1300(4_11)F.pdf" target="_blank">Get the Louisiana state withholding form L-4</a>. (PDF)</p>
+						</div>
+					</div>
+					<div class="help-section-internal-content state">
+						<h4>Maryland</h4>
+						<div class="state-content-wrapper">
+							<strong>How can I find the MD state withholding form?</strong>
+							<p><a href="http://forms.marylandtaxes.com/12_forms/mw507.pdf" target="_blank">Get the Maryland state withholding form MW 507</a>. (PDF)</p>
+						</div>
+					</div>
+					<div class="help-section-internal-content state">
+						<h4>Nevada</h4>
+						<div class="state-content-wrapper">
+							<strong>Does Nevada have a state withholding form?</strong>
+							<p>The State of Nevada does not have an employee withholding tax, so there is no withholding form.</p>
+						</div>
+					</div>
+					<div class="help-section-internal-content state">
+						<h4>New Hampshire</h4>
+						<div class="state-content-wrapper">
+							<strong>Does New Hampshire have a state withholding form?</strong>
+							<p>The State of New Hampshire does not have an employee withholding tax, so there is no withholding form.</p>
+						</div>
+					</div>
+					<div class="help-section-internal-content state">
+						<h4>New York</h4>
+						<div class="state-content-wrapper">
+							<strong>How can I find the NY state withholding form?</strong>
+							<p><a href="http://www.tax.ny.gov/pdf/current_forms/wt/it2104_fill_in.pdf" target="_blank">Get the New York state withholding Form IT-2104</a>. (PDF)</p>
+  							<strong>What about NY local taxes?</strong>
+							<p>Currently, employees who live in New York City or the City of Yonkers are subject to a local resident tax. Employees who work in Yonkers are also taxed on the money they earn in the City of Yonkers. If you’re not sure whether the employee is considered a resident of New York City or Yonkers, check the employee’s completed Form IT-2104 (NY state withholding form) or contact the state agency.</p>
+							<strong>What about New York state disability (SDI)?</strong>
+							<p>Sorry, but we don’t calculate New York state disability insurance (SDI). New York SDI can either be paid entirely by the employer or jointly by the employer and employee. To offset the cost of providing the state disability benefit to your employee, New York allows you to deduct up to 60 cents per week (maximum) from the employee’s paychecks. For details, see <a href="http://ww3.nysif.com/DisabilityBenefits/AboutDisabilityBenefits.aspx" target="_blank">Disability Benefits on the New York State Insurance Fund (NYSIF) website</a>.</p>
+						</div>
+					</div>
+					<div class="help-section-internal-content state">
+						<h4>North Carolina</h4>
+						<div class="state-content-wrapper">
+							<strong>How can I find the NC state withholding form?</strong>
+							<p><a href="http://www.dor.state.nc.us/downloads/nc-4.pdf" target="_blank">Get the North Carolina state withholding form NC-4</a>. (PDF)</p>
+						</div>
+					</div>
+					<div class="help-section-internal-content state">
+						<h4>South Dakota</h4>
+						<div class="state-content-wrapper">
+							<strong>Does South Dakota have a state withholding form?</strong>
+							<p>The State of South Dakota does not have an employee withholding tax, so there is no withholding form.</p>
+						</div>
+					</div>
+					<div class="help-section-internal-content state">
+						<h4>Tennessee</h4>
+						<div class="state-content-wrapper">
+							<strong>Does Tennessee have a state withholding form?</strong>
+							<p>The State of Tennessee does not have an employee withholding tax, so there is no withholding form.</p>
+						</div>
+					</div>
+					<div class="help-section-internal-content state">
+						<h4>Texas</h4>
+						<div class="state-content-wrapper">
+							<strong>Does Texas have a state withholding form?</strong>
+							<p>The State of Texas does not have an employee withholding tax, so there is no withholding form.</p>
+						</div>
+					</div>
+					<div class="help-section-internal-content state">
+						<h4>Virginia</h4>
+						<div class="state-content-wrapper">
+							<strong>How can I find the VA state withholding form and instructions?</strong>
+							<p><a href="http://www.tax.virginia.gov/taxforms/Business/Withholding%20Tax/VA-%204.pdf" target="_blank">Get the Virginia state withholding form VA-4</a> and <a href="http://www.tax.virginia.gov/taxforms/Business/Withholding%20Tax/Employer%20Withholding%20Instructions.pdf" target="_blank">instructions for employers</a>. (PDF)</p>
+						</div>
+					</div>
+					<div class="help-section-internal-content state">
+						<h4>Washington</h4>
+						<div class="state-content-wrapper">
+							<strong>Does Washington have a state withholding form?</strong>
+							<p>The State of Washington does not have an employee withholding tax, so there is no withholding form.</p>
+							<strong>How do I know what to enter for the workers’ comp rate?</strong>
+							<p>To find the workers’ comp rate for your employee, look up their employment class (type of work) and their hourly deduction rate from the Department of Labor and Industry <a href="http://www.lni.wa.gov/ClaimsIns/Insurance/RatesRisk/Check/RatesHistory/default.asp" target="_blank">Rates for Workers’ Compensation page</a>.
+							If your employee does not require workers’ comp, enter a value of zero.</p>
+						</div>
+					</div>
+					<div class="help-section-internal-content state">
+						<h4>Wyoming</h4>
+						<div class="state-content-wrapper">
+							<strong>Does Wyoming have a state withholding form?</strong>
+							<p>The State of Wyoming does not have an employee withholding tax, so there is no withholding form.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<!-- GA Tracking -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41027601-1', 'ikenta.com');
+  ga('send', 'pageview');
+</script>
+
+<script src="{{STATIC_URL}}js/vendor/jquery-1.8.3.min.js"></script>
+<script src="{{STATIC_URL}}js/vendor/jquery.history.js"></script>
+<script>
+
+$(document).ready(function() {
+	var anchor = document.location.hash;
+	$(anchor + ' .help-toggle-header').next().addClass('in');
+
+    History.Adapter.bind(window,'popstate',function(){ // Note: We are using statechange instead of popstate
+		$('.help-toggle-header').next().removeClass('in');
+		var anchor = document.location.hash;
+		$(anchor + ' .help-toggle-header').next().addClass('in');
+	});
+});
+
+$('body').delegate('.help-toggle-header','click',function(e){
+    $(this).next().toggleClass('in');
+});
+</script>
+</body>
+</html>

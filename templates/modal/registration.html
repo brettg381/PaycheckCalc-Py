@@ -1,0 +1,55 @@
+<div id="RegistrationModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="RegistrationModalLabel" aria-hidden="true">
+<div class="input">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="RegistrationModalLabel">To save this check, sign up for free!</h3>
+	</div>
+	<form id="registration-form" method="post" action="{% url 'auth_login_async' %}">
+		<div class="modal-body">
+	    	<div class="alert alert-error" style="display:none">
+	    		<button type="button" class="close" data-dismiss="alert">×</button>
+	    		<p class="error-info"><strong>Oh snap!</strong> Change a few things up and try submitting again.</p>
+	    	</div>
+	    	{% include "snippets/form.html" with legend='' form=registration_form %}
+	    	<div class="help-input">
+	    		<strong>Save some steps for you and your accountant!</strong><br>Enter your accountant's email address to give them automatic access to your paycheck details and history
+	    	</div>
+			<div class="form-line">
+	    	<p class="spaced">
+				<button id="btn-signup" type="submit" class="btn btn-primary disabled">Sign Up!</button>
+				<button class="btn" data-dismiss="modal" aria-hidden="true" style="margin-left:10px;">Cancel</button>
+			</p>
+			</div>
+	  </div>
+	</form>
+</div>
+<div class="result hide">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	</div>
+	<div class="modal-body" style="text-align:center">
+		<div class="modal-legend">
+			<img src="{{STATIC_URL}}img/big_check.png" alt="Check" />
+			<h4>Woohoo! Your user was created successfully!</h4>
+		</div>
+		<p><button class="btn btn-primary btn-ok" data-dismiss="modal" aria-hidden="true">OK</button></p>
+	</div>
+</div>
+<div class="result-save hide">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	</div>
+	<div class="modal-body" style="text-align:center">
+		<div class="modal-legend">
+			<img src="{{STATIC_URL}}img/big_check.png" alt="Check" />
+			<h4>Nice work! Your check has been saved!</h4>
+		</div>
+		<p class="result-info">Don't forget to handwrite and deliver this check for $ NaN to NaN on NaN</p>
+		<p><small>You can look up the details at any time in <a href="{% url 'history' %}">View History</a></small></p>
+		<p>
+			<button class="btn btn-primary btn-ok" data-dismiss="modal" aria-hidden="true">OK</button>
+		</p>
+	</div>
+</div>
+
+</div>	

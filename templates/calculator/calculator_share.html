@@ -1,0 +1,18 @@
+<script type="text/template" id="calculator-share-tpl">
+<div id="result-check">
+	<h1>Here is your new paycheck for {% templatetag openvariable %}employee{% templatetag closevariable %}!</h1>
+	<p class="p1">We calculated this check for you using the most up-to-date tax laws and rates.</p>
+	<div class="next">
+		<p class="title">What&#39;s next?</p>
+		<ul>
+			<li>Handwrite and deliver this check for ${% templatetag openvariable %}total{% templatetag closevariable %} to {% templatetag openvariable %}employee{% templatetag closevariable %} on {% templatetag openvariable %}date{% templatetag closevariable %}.</li>
+			<li>Save the check details for your history.</li>
+		</ul>
+	</div>
+	
+	<div class="action">	
+		<a id="btn-save" href="#" class="btn btn-primary btn-large">Save this check!</a>
+	</div>
+	<p class="p3">Want to make a change? <a id="btn-recalculate" href="#">Re-calculate this check</a></p>
+</div>
+</script>

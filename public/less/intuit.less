@@ -1,0 +1,180 @@
+::-webkit-scrollbar {
+	width:8px;
+	height:8px;
+	-webkit-border-radius:6px;
+	background-color:#e5e5e5;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+	width:4px;
+	-webkit-border-radius:6px;
+	background-color:#b0b0b0;
+}
+
+::-webkit-scrollbar-thumb {
+	width:4px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	background-color:#b0b0b0;
+}
+
+html, body {
+	height: 100%;
+}
+
+.hidden {
+	display: none;
+}
+
+#container {
+	height: 100%;
+	width: 100%;
+
+	#slider {
+		height: 100%;
+		width: 100%;
+		overflow: hidden;
+		position:relative;
+
+
+		section {
+			width: 50%;
+			height: 100%;
+			position: absolute;
+
+			.transition(all 1s ease);
+		}
+	}
+
+	.section-inner {
+		padding: 70px 20px 20px 40px;
+	}
+
+	#btn-calculate {
+		position: absolute;
+		left: 50%;
+		top: 160px;
+		//margin-left: -100px;
+		margin-left: -88px;
+	}
+}
+
+#calculator-input {
+	top:0;
+	left: 0;
+	overflow: auto;
+}
+#calculator-result {
+	background-image: url(../img/right_bg.jpg); top:0; left: 50%;
+	.section-inner {
+		height: 100%;
+	}
+}
+#calculator-share {
+	top:0;
+	left: 100%;
+	.p1 {
+		margin: 20px 0 30px;
+	}
+	.p3 {
+		color: #999;
+	}
+	.title {
+		font-weight: bold;
+	}
+	ul {
+		list-style-type: square;
+		color: #999;
+	}
+	li {
+		margin-bottom: 10px;
+		color: #3F3F3F;
+	}
+}
+
+
+label {
+	float: left;
+	width: 120px;
+	margin: 6px 12px 0 0;
+	font-size: 11pt;
+	color: #515151;
+	text-align: right;
+}
+
+select {
+  line-height: 20px;
+  text-indent: 4px;
+}
+
+.modal form {
+	margin: 0;
+}
+
+#accountant-share {
+	position: absolute;
+	padding: 10px 20px;
+	margin: 0;
+	bottom: 0;
+	background-color: #888888;
+	color: #EDEDED;
+	right: 80px;
+	font-size: 14px;
+	cursor: pointer;
+	a{
+		color:@white;
+		font-weight: bold;
+		&:hover {color:@white;font-weight: bold;}
+	}
+
+	p { margin:0 }
+}
+
+#result-check {
+	margin: 20px;
+	.p2 {
+		font-weight: bold;
+	}
+	.pr {
+		color: #999;
+	}
+	.action {
+		margin: 40px 0 60px;
+	}
+}
+
+.autocomplete-suggestions { border: 1px solid #999; background: #FFF; cursor: default; overflow: auto; color: #3F3F3F; }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-suggestion.first { color: #4486c6; }
+.autocomplete-selected { background: #E3E9F3; }
+.autocomplete-input { margin-right: 0 !important; }
+.autocomplete-button {
+	display: inline-block;
+	background: url("../img/select.png") 50% 50% no-repeat;
+	width: 30px;
+	height: 28px;
+	margin-left: -1px;
+	border: 1px solid #CCC;
+	text-indent: -9999px;
+	cursor: pointer;
+}
+
+div.form-line label div.help_text {
+	color: #999;
+	font-style: italic;
+	font-weight: lighter;
+	font-size: 12px;
+}
+
+img#spinner {
+	height: 25px;
+	margin-left: 15px;
+	display: none;
+}
+
+.modal-header .close{
+	font-weight: normal;
+	font-size: 34px;
+	margin-top: 4px;
+	.transition(all 0.2s linear);
+}

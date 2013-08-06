@@ -1,0 +1,64 @@
+//
+// Responsive: Tablet to desktop
+// --------------------------------------------------
+
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+  // Fixed grid
+  #grid > .core(@gridColumnWidth768, @gridGutterWidth768);
+
+  // Fluid grid
+  #grid > .fluid(@fluidGridColumnWidth768, @fluidGridGutterWidth768);
+
+  // Input grid
+  #grid > .input(@gridColumnWidth768, @gridGutterWidth768);
+
+  // No need to reset .thumbnails here since it's the same @gridGutterWidth
+  #container .section-inner {
+	padding: 0px 10px 20px 10px;
+  }
+  
+  #calculator-form .form-line label {
+  	clear: both;
+	float: none;
+	display: block;
+	width: auto;
+	text-align: left;	
+  }
+  
+  #accountant-share {
+	right: 0;
+  }
+  
+  #invoice {
+  	width: 100%;
+  	
+  	.body {
+  	  background-size: 100%;
+  	}
+  	
+  	.bottom {
+  	  background-size: 100%;
+  	}
+  	
+  	.header {
+	  height: 150px;
+  	  background-size: 100%;
+  	  
+  	  .date {
+  	  	margin-bottom: 0px;
+  	  }
+  	  
+  	  .employee {
+  	  	font-size: 15px;
+  	  	margin-left: 80px;
+  	  }
+  	  
+  	  .pay {
+  	  	font-size: 18px;
+  	  }
+  
+  	}
+  }
+}

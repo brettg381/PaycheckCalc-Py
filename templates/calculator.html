@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="slider">
+    <section id="calculator-input">
+    	<div class="section-inner">
+{% if user.is_authenticated %}
+    	<h1>Woo! Let's calculate some more checks!</h1>
+{% else %}
+    	<h1>Welcome! Let’s calculate your first paycheck!</h1>
+{% endif %}
+    	{% include 'calculator/calculator_form.html' %}
+    	</div>
+    </section>
+
+    <section id="calculator-result">
+    	<div class="section-inner">
+    		<a id="btn-calculate" href="#" class="btn btn-primary btn-large">Calculate this check!</a>
+    	</div>
+    </section>
+
+    <section id="calculator-share">
+    	<div class="section-inner">
+    		<h1>Here is your new paycheck for ...!</h1>
+    		<p>Want to make a change? <a id="btn-recalculate" href="#">Re-calculate this check</a></p>
+    	</div>
+    </section>
+	<div id="accountant-share">
+		<p>Are you an accountant? <a href="#AccountantModal" role="button" data-toggle="modal">Invite your client!</a></p>
+	</div>
+</div>
+{% endblock %}
+
+{% block extra_script %}
+
+{% include 'calculator/calculator_result.html'  %}
+{% include 'calculator/calculator_share.html'  %}
+{% include "modal/save_paycheck.html" %}
+
+{% load compress %}
+
+<script src="{{STATIC_URL}}js/vendor/hogan-2.0.0.min.js"></script>
+<script src="{{STATIC_URL}}js/vendor/jquery.history.js"></script>
+
+{% compress js %}
+<script src="{{STATIC_URL}}js/vendor/jquery.autocomplete.js"></script>
+<script src="{{STATIC_URL}}js/intuit/plugins.js"></script>
+<script src="{{STATIC_URL}}js/intuit/validations.js"></script>
+<script src="{{STATIC_URL}}js/intuit/calculator.js"></script>
+{% endcompress %}
+
+{% compress js inline %}
+<script type="text/javascript">
+$(document).ready(function() {
+
+    var aux = $('#pay_date').datepicker({
+    	  format: 'mm/dd/yyyy'
+        }).on('changeDate', function(ev) {
+        	if (ev.viewMode === 'days')
+         		$(this).datepicker('hide');
+        });
+	$(".form_calendar").click(function() {
+		$("#pay_date").datepicker('show');
+	});
+
+	/*
+	 * If not logged user, show popover message
+	 */
+	if (!window.authenticated) {
+
+		$('#container').popover({
+			animation: true,
+			html: true,
+			title: "Add your first employee!",
+			content:  "Or, <a href='#LoginModal' role='button' data-toggle='modal'>Sign In</a> to use your saved employees.",
+			trigger: 'manual'
+		});
+		$('#container').popover('show');
+		var pos = $('#employee').offset();
+		$('.popover').css({ top: (pos.top-20)+'px', left: (pos.left+220)+'px', maxWidth: 'none', width: '320px' });
+		$('#employee').bind('blur', function() {
+			$('#container').popover('hide');
+			$('#container').popover('destroy')
+		});
+	}
+
+	/*
+	 * Check if user want to leave the calculator without save
+	 */
+	 $('body').on('click', 'a[data-intuit="check-saved"]', function(e){
+	 	var that = this;
+	 	if (intuit.calculator.need_save()) {
+	 		e.preventDefault();
+	 		var r = intuit.calculator.result();
+	 		$('#SavePaycheckModal .save-employee').html(r.employee);
+	 		$('#SavePaycheckModal .save-pay-date').html(r.pay_date);
+	 		$('#SavePaycheckModal .save-net-pay').html($('<strong/>').html('$ ' + r.net_pay));
+
+		 	$('#SavePaycheckModal').modal();
+		 	$('#SavePaycheckModal').on('hidden', function(){
+		 		$('#btn-exit').off('click');
+		 	});
+
+		 	$('#btn-exit').on('click',function(e) {
+			 	e.preventDefault();
+			 	document.location.href=that.href;
+			 	return false;
+			 });
+
+		 	return false;
+	 	}
+	 	return true;
+	 });
+});
+</script>
+{% endcompress %}
+{% endblock %}

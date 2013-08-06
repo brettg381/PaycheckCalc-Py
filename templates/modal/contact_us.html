@@ -1,0 +1,33 @@
+<div id="ContactModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ContactModalLabel" aria-hidden="true">
+<div class="input">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="ContactModalLabel">Need help? Have feedback? Get in touch!</h3>
+	</div>
+	<form id="contact-form" method="post" action="{% url 'auth_login_async' %}">
+		<div class="modal-body">
+	    	{% include "snippets/form.html" with legend='' form=contact_form %}
+			<div class="form-line">
+	    	<p class="spaced">
+				<button id="btn-contact-us" type="submit" class="btn btn-primary disabled">Send</button>
+				<button class="btn" data-dismiss="modal" aria-hidden="true" style="margin-left:10px;">Cancel</button>
+			</p>
+			</div>
+	  </div>
+	</form>
+</div>
+<div class="result hide">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	</div>
+	<div class="modal-body" style="text-align:center">
+		<div class="modal-legend">
+			<img src="{{STATIC_URL}}img/big_check.png" alt="Check" />
+			<h4>Woohoo! Your request was sent successfully<br>In short we contact you!</h4>
+		</div>
+		<p>
+			<button class="btn btn-primary btn-ok" data-dismiss="modal" aria-hidden="true">OK</button>
+		</p>
+	</div>
+</div>
+</div>	

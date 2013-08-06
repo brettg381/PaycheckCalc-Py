@@ -1,0 +1,678 @@
+<form id="calculator-form" method="post" action="." class="form_calculator">
+	{% csrf_token %}
+	<div class="form_top accordion">
+		<div class="form-line">
+			<label for="employee"><strong>Employee</strong></label>
+			<input type="text" name="employee" id="employee" class="required autocomplete-input" />
+			<img id="spinner" src="{{STATIC_URL}}img/big_spinning_icon.gif">
+		</div>
+		<div class="form-line">
+			<label for="state">State</label>
+			<select name="state" id="state" class="required " disabled >
+				<option value=""></option>
+				<option value="al" selected>Alabama</option>
+				<option value="ak">Alaska</option>
+				<option value="az">Arizona</option>
+				<option value="ar">Arkansas</option>
+				<option value="ca">California</option>
+				<option value="co">Colorado</option>
+				<option value="ct">Connecticut</option>
+				<option value="de">Delaware</option>
+				<option value="cb">District of Columbia</option>
+				<option value="fl">Florida</option>
+				<option value="ga">Georgia</option>
+				<option value="hi">Hawaii</option>
+				<option value="id">Idaho</option>
+				<option value="il">Illinois</option>
+				<option value="in">Indiana</option>
+				<option value="ia">Iowa</option>
+				<option value="ks">Kansas</option>
+				<option value="ky">Kentucky</option>
+				<option value="la">Louisiana</option>
+				<option value="me">Maine</option>
+				<option value="md">Maryland</option>
+				<option value="ma">Massachusetts</option>
+				<option value="mi">Michigan</option>
+				<option value="mn">Minnesota</option>
+				<option value="ms">Mississippi</option>
+				<option value="mo">Missouri</option>
+				<option value="mt">Montana</option>
+				<option value="ne">Nebraska</option>
+				<option value="nv">Nevada</option>
+				<option value="nh">New Hampshire</option>
+				<option value="nj">New Jersey</option>
+				<option value="nm">New Mexico</option>
+				<option value="ny">New York</option>
+				<option value="nc">North Carolina</option>
+				<option value="nd">North Dakota</option>
+				<option value="oh">Ohio</option>
+				<option value="ok">Oklahoma</option>
+				<option value="or">Oregon</option>
+				<option value="pa">Pennsylvania</option>
+				<option value="ri">Rhode Island</option>
+				<option value="sc">South Carolina</option>
+				<option value="sd">South Dakota</option>
+				<option value="tn">Tennessee</option>
+				<option value="tx">Texas</option>
+				<option value="ut">Utah</option>
+				<option value="vt">Vermont</option>
+				<option value="va">Virginia</option>
+				<option value="wa">Washington</option>
+				<option value="wv">West Virginia</option>
+				<option value="wi">Wisconsin</option>
+				<option value="wy">Wyoming</option>
+			</select>
+			<span class="form_help"><a href="{% url 'help' %}#state"><img src="{{STATIC_URL}}img/help_symbol.png" alt="Help"></a></span>
+		</div>
+	</div> <!-- form top -->
+	<div class="accordion form-body" id="accordion2">
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<span class="form_help"><a href="{% url 'help' %}#pay-information"><img src="{{STATIC_URL}}img/help_symbol.png" alt="Help"></a></span>
+				<a class="accordion-toggle collapsed disabled" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+					<h4 class="form_title">Pay Information </h4>
+				</a>
+			</div>
+			<div id="collapseOne" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<div class="form-line">
+						<label for="pay_date">Pay Date</label>
+						<input type="text" name="pay_date" id="pay_date" value="" >
+						<img class="form_calendar" src="{{STATIC_URL}}img/form_calendar.png" alt="calendar" />
+					</div>
+					<div class="form-line">
+						<label for="pay_period">Pay Period</label>
+						<select name="pay_period" id="pay_period">
+							<option value="52">Weekly</option>
+							<option value="26">Biweekly</option>
+						</select>
+					</div>
+					<div class="form-line">
+						<label for="pay_type">Pay Type</label>
+						<select name="pay_type" id="pay_type">
+							<option value="hourly" selected="selected">Hourly</option>
+							<option value="salary">Salary</option>
+						</select>
+					</div>
+					<div class="form-line hours-worked-wrapper">
+						<label for="hours_worked">Hours Worked</label>
+						<input type="text" name="hours_worked" id="hours_worked" placeholder="0">
+					</div>
+					<div class="form-line">
+						<label for="pay_rate_hs" class="pay-rate-label">Pay Rate</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" class="input_pre currency" name="pay_rate_hs" id="pay_rate_hs" placeholder="0.00">
+						</div>
+						<span class="pay-rate-time-indicator">per hour</span>
+					</div>
+					<div class="form-line question">
+						<p>Have you already paid this employee this year?
+							<span><input type="radio" name="grossQuestion" id="grossQuestionYes" value="Yes" > Yes</span>
+							<span><input type="radio" name="grossQuestion" id="grossQuestionNo" value="No" checked> No</span>
+						</p>
+					</div>
+					<div class="form-line">
+						<label for="gross_ytd">Gross Year-To-Date</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" name="gross_ytd" id="gross_ytd" placeholder="0.00" class="input_pre currency">
+						</div>
+						<p id="gross-help" class="spaced help">
+							Some taxes are calculated based on year-to-date amounts.<br> If you've paid this year, enter the total wages, before taxes, paid so far (Gross Year-To-Date amount).
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<span class="form_help"><a href="{% url 'help' %}#additional-pay"><img src="{{STATIC_URL}}img/help_symbol.png" alt="Help"></a></span>
+				<a class="accordion-toggle collapsed disabled" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+					<h4 class="form_title">Additional Pay <small>(Optional)</small></h4>
+				</a>
+			</div>
+			<div id="collapseTwo" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<div class="form-line overtime-worked-wrapper">
+						<label for="overtime_worked">Overtime Worked</label>
+						<input type="text" name="overtime_worked" id="overtime_worked" placeholder="0.00" class="input_pre currency">
+						<span class="input-info">hours</span>
+					</div>
+					<div class="form-line salary-wrapper">
+						<label for="salary">Salary</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" name="salary" id="salary" placeholder="0.00" class="input_pre currency">
+						</div>
+					</div>
+					<div class="form-line">
+						<label for="bonus">Bonus</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" name="bonus" id="bonus" placeholder="0.00" class="input_pre currency" />
+						</div>
+						<span class="input-info">this check only</span>
+					</div>
+					<div class="form-line">
+						<label for="commission">Commission</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" name="commission" id="commission" placeholder="0.00" class="input_pre currency" />
+						</div>
+						<span class="input-info">this check only</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="accordion-group accordion-federal">
+			<div class="accordion-heading">
+				<span class="form_help"><a href="{% url 'help' %}#federal-withholdings"><img src="{{STATIC_URL}}img/help_symbol.png" alt="Help"></a></span>
+				<a class="accordion-toggle collapsed disabled" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+					<h4 class="form_title">Federal Withholdings</h4>
+				</a>
+			</div>
+			<div id="collapseThree" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<div class="form-line">
+						<p class="help"> Enter the info from employee completed <a href="http://www.irs.gov/pub/irs-pdf/fw4.pdf" target="_blank">W4 Form</a>. If you don't have employee W4 yet, don't worry, we'll fill in the safest tax rates for you. </p>
+					</div>
+					<div class="form-line">
+						<label for="filing_status">Filing Status</label>
+						<select name="filing_status" id="filing_status">
+							<option value="Single" selected="selected">Single</option>
+							<option value="Married">Married</option>
+							<option value="Single">Married, but Single Rate</option>
+							<option value="DoNotWithhold">Do Not Withhold</option>
+						</select>
+					</div>
+					<div class="form-line">
+						<label for="exemptions">Allowances</label>
+						<input type="text" name="exemptions" id="exemptions" placeholder="0" class="input_pre" />
+					</div>
+					<div class="form-line">
+						<label for="additional_withholding">Additional</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" name="additional_withholding" id="additional_withholding" placeholder="0.00" class="input_pre currency" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ALABAMA -->
+		<div class="accordion-group state-al hidden accordion-last">
+			<div class="accordion-heading">
+				<span class="form_help"><a href="{% url 'help' %}#state-withholdings"><img src="{{STATIC_URL}}img/help_symbol.png" alt="Help"></a></span>
+				<a class="accordion-toggle collapsed disabled" data-toggle="collapse" data-parent="#accordion2" href="#collapseAL">
+					<h4 class="form_title">Alabama State Withholdings</h4>
+				</a>
+			</div>
+			<div id="collapseAL" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<div class="form-line">
+						<label for="al_stateFilingStatus">Filling Status</label>
+						<select name="al_stateFilingStatus" id="al_stateFilingStatus">
+							<option value="S">Single</option>
+							<option value="0" selected="selected">Single, No Exemption</option>
+							<option value="M">Married</option>
+							<option value="MS">Married, Filing Separately</option>
+							<option value="H">Head of Family</option>
+							<option value="DoNotWithhold">Do Not Withhold</option>
+						</select>
+					</div>
+					<div class="form-line">
+						<label for="al_stateExemptions">Number Of Dependents</label>
+						<input type="text" class="input_pre" name="al_stateExemptions" id="al_stateExemptions" placeholder="0"/>
+					</div>
+					<div class="form-line">
+						<label for="al_stateAdditionalWithholding">Additional Amount</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" class="input_pre currency" name="al_stateAdditionalWithholding" id="al_stateAdditionalWithholding" placeholder="0.00"/>
+						</div>
+					</div>
+					<div class="form-line">
+						<label for="al_workSiteZip">Zip Code</label>
+						<input type="text" class="input_pre" name="al_workSiteZip" id="al_workSiteZip" placeholder="" maxlength="5"/>
+					</div>
+					<div class="form-line">
+						<label for="al_workSiteZip">City</label>
+						<select name="al_workSiteCity" id="al_workSiteCity" disabled></select>
+					</div>
+					<div class="form-line">
+						<label for="al_workSiteZip">County</label>
+						<select name="al_workSiteCounty" id="al_workSiteCounty" disabled></select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ARIZONA -->
+		<div class="accordion-group state-az hidden accordion-last">
+			<div class="accordion-heading">
+				<span class="form_help"><a href="{% url 'help' %}#state-withholdings"><img src="{{STATIC_URL}}img/help_symbol.png" alt="Help"></a></span>
+				<a class="accordion-toggle collapsed disabled" data-toggle="collapse" data-parent="#accordion2" href="#collapseAZ">
+					<h4 class="form_title">Arizona State Withholdings</h4>
+				</a>
+			</div>
+			<div id="collapseAZ" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<div class="form-line">
+						<label for="az_stateFilingStatus">Withholding Rate</label>
+						<select name="az_stateFilingStatus" id="az_stateFilingStatus">
+						<option value="V1_A">0.0%</option>
+						<option value="V1_B">0.8%</option>
+						<option value="V1_C">1.3%</option>
+						<option value="V1_D">1.8%</option>
+						<option value="V1_E">2.7%</option>
+						<option value="V1_F">3.6%</option>
+						<option value="V1_G">4.2%</option>
+						<option value="V1_H" selected="selected">5.1%</option>
+						</select>
+					</div>
+					<div class="form-line">
+						<label for="az_stateAdditionalWithholding">Additional Amount</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" class="input_pre currency" name="az_stateAdditionalWithholding" id="az_stateAdditionalWithholding" placeholder="0.00"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- CALIFORNIA -->
+		<div class="accordion-group state-ca hidden accordion-last">
+			<div class="accordion-heading">
+				<span class="form_help"><a href="{% url 'help' %}#state-withholdings"><img src="{{STATIC_URL}}img/help_symbol.png" alt="Help"></a></span>
+				<a class="accordion-toggle collapsed disabled" data-toggle="collapse" data-parent="#accordion2" href="#collapseCA">
+					<h4 class="form_title">California State Withholdings</h4>
+				</a>
+			</div>
+			<div id="collapseCA" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<div class="form-line">
+						<label for="ca_stateFilingStatus">Filling Status</label>
+						<select name="ca_stateFilingStatus" id="ca_stateFilingStatus">
+							<option value="SingleOrDualIncome" selected="selected">Single/Married (2+ incomes)</option>
+							<option value="MarriedOneIncome">Married (1 income)</option>
+							<option value="HeadOfHousehold">Head Of Household</option>
+							<option value="DoNotWithhold">Do Not Withhold</option>
+						</select>
+					</div>
+					<div class="form-line">
+						<label for="ca_stateExemptions">Number of Allowances</label>
+						<input type="text" class="input_pre" name="ca_stateExemptions" id="ca_stateExemptions" placeholder="0"/>
+					</div>
+					<div class="form-line">
+						<label for="ca_stateAdditionalWithholding">Additional Withholding</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" class="input_pre currency" name="ca_stateAdditionalWithholding" id="ca_stateAdditionalWithholding" placeholder="0.00"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- GEORGIA -->
+		<div class="accordion-group state-ga hidden accordion-last">
+			<div class="accordion-heading">
+				<span class="form_help"><a href="{% url 'help' %}#state-withholdings"><img src="{{STATIC_URL}}img/help_symbol.png" alt="Help"></a></span>
+				<a class="accordion-toggle collapsed disabled" data-toggle="collapse" data-parent="#accordion2" href="#collapseGA">
+					<h4 class="form_title">Georgia State Withholdings</h4>
+				</a>
+			</div>
+			<div id="collapseGA" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<div class="form-line">
+						<label for="ga_stateFilingStatus">Filling Status</label>
+						<select name="ga_stateFilingStatus" id="ga_stateFilingStatus">
+							<option value="Single" selected="selected">Single</option>
+							<option value="MarriedJointlyTwoWorking">Married-Joint, 2 Working</option>
+							<option value="MarriedJointlyOneWorking">Married-Joint, 1 Working</option>
+							<option value="MarriedFilingSeparate">Married-Filing Separate</option>
+							<option value="HeadOfHousehold">Head Of Household</option>
+							<option value="DoNotWithhold">Do Not Withhold</option>
+						</select>
+					</div>
+					<div class="form-line">
+						<label for="ga_stateExemptions">Total Allowances</label>
+						<input type="text" class="input_pre" name="ga_stateExemptions" id="ga_stateExemptions" placeholder="0"/>
+					</div>
+					<div class="form-line">
+						<label for="ga_stateAdditionalWithholding">Additional Withholding</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" class="input_pre currency" name="ga_stateAdditionalWithholding" id="ga_stateAdditionalWithholding" placeholder="0.00"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ILLINOIS -->
+		<div class="accordion-group state-il hidden accordion-last">
+			<div class="accordion-heading">
+				<span class="form_help"><a href="{% url 'help' %}#state-withholdings"><img src="{{STATIC_URL}}img/help_symbol.png" alt="Help"></a></span>
+				<a class="accordion-toggle collapsed disabled" data-toggle="collapse" data-parent="#accordion2" href="#collapseIL">
+					<h4 class="form_title">Illinois State Withholdings</h4>
+				</a>
+			</div>
+			<div id="collapseIL" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<div class="form-line">
+						<label for="il_stateFilingStatus">Filling Status</label>
+						<select name="il_stateFilingStatus" id="il_stateFilingStatus">
+							<option value="Regular" selected="selected">Regular</option>
+							<option value="DoNotWithhold">Do Not Withhold</option>
+						</select>
+					</div>
+					<div class="form-line">
+						<label for="il_stateExemptions">Basic Allowances</label>
+						<input type="text" class="input_pre" name="il_stateExemptions" id="il_stateExemptions" placeholder="0"/>
+					</div>
+					<div class="form-line">
+						<label for="il_stateAdditionalWithholding">Additional Withheld</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" class="input_pre currency" name="il_stateAdditionalWithholding" id="il_stateAdditionalWithholding" placeholder="0.00"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- LOUISIANA -->
+		<div class="accordion-group state-la hidden accordion-last">
+			<div class="accordion-heading">
+				<span class="form_help"><a href="{% url 'help' %}#state-withholdings"><img src="{{STATIC_URL}}img/help_symbol.png" alt="Help"></a></span>
+				<a class="accordion-toggle collapsed disabled" data-toggle="collapse" data-parent="#accordion2" href="#collapseLA">
+					<h4 class="form_title">Louisiana State Withholdings</h4>
+				</a>
+			</div>
+			<div id="collapseLA" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<div class="form-line">
+						<label for="la_stateFilingStatus">Filling Status</label>
+						<select name="la_stateFilingStatus" id="la_stateFilingStatus">
+							<option value="Regular" selected="selected">Regular</option>
+							<option value="DoNotWithhold">Do Not Withhold</option>
+						</select>
+					</div>
+					<div class="form-line">
+						<label for="la_stateExemptions">Total Exemptions</label>
+						<input type="text" class="input_pre" name="la_stateExemptions" id="la_stateExemptions" placeholder="0"/>
+					</div>
+					<div class="form-line">
+						<label for="la_stateSecondaryExemptions">Total Dependents</label>
+						<input type="text" class="input_pre" name="la_stateSecondaryExemptions" id="la_stateSecondaryExemptions" placeholder="0"/>
+					</div>
+					<div class="form-line">
+						<label for="la_stateAdditionalWithholding">Amount to be Withheld</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" class="input_pre currency" name="la_stateAdditionalWithholding" id="la_stateAdditionalWithholding" placeholder="0.00"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- MARYLAND -->
+		<div class="accordion-group state-md hidden accordion-last">
+			<div class="accordion-heading">
+				<span class="form_help"><a href="{% url 'help' %}#state-withholdings"><img src="{{STATIC_URL}}img/help_symbol.png" alt="Help"></a></span>
+				<a class="accordion-toggle collapsed disabled" data-toggle="collapse" data-parent="#accordion2" href="#collapseMD">
+					<h4 class="form_title">Maryland State Withholdings</h4>
+				</a>
+			</div>
+			<div id="collapseMD" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<div class="form-line">
+						<label for="md_stateFilingStatus">Filling Status</label>
+						<select name="md_stateFilingStatus" id="md_stateFilingStatus">
+							<option value="Single" selected="selected">Single</option>
+							<option value="Married">Married</option>
+							<option value="Single">Married, but Single Rate</option>
+							<option value="DoNotWithhold">Do Not Withhold</option>
+						</select>
+					</div>
+					<div class="form-line">
+						<label for="md_residenceCounty">Residence County</label>
+						<select name="md_residenceCounty" id="md_residenceCounty">
+							<option value=""></option>
+							<option value="Allegany">Allegany</option>
+							<option value="Anne Arundel">Anne Arundel</option>
+							<option value="Baltimore">Baltimore</option>
+							<option value="Calvert">Calvert</option>
+							<option value="Caroline">Caroline</option>
+							<option value="Carroll">Carroll</option>
+							<option value="Cecil">Cecil</option>
+							<option value="Charles">Charles</option>
+							<option value="Dorchester">Dorchester</option>
+							<option value="Frederick">Frederick</option>
+							<option value="Garrett">Garrett</option>
+							<option value="Harford">Harford</option>
+							<option value="Howard">Howard</option>
+							<option value="Kent">Kent</option>
+							<option value="Montgomery">Montgomery</option>
+							<option value="Prince Georges">Prince Georges</option>
+							<option value="Queen Annes">Queen Annes</option>
+							<option value="St Marys">St Marys</option>
+							<option value="Somerset">Somerset</option>
+							<option value="Talbot">Talbot</option>
+							<option value="Washington">Washington</option>
+							<option value="Wicomico">Wicomico</option>
+							<option value="Worcester">Worcester</option>
+							<option value="Baltimore (Ind City)">Baltimore (Ind City)</option>
+						</select>
+					</div>
+					<div class="form-line">
+						<label for="md_stateExemptions">Total Exemptions</label>
+						<input type="text" class="input_pre" name="md_stateExemptions" id="md_stateExemptions" placeholder="0"/>
+					</div>
+					<div class="form-line">
+						<label for="md_stateAdditionalWithholding">Additional Withholding</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" class="input_pre currency" name="md_stateAdditionalWithholding" id="md_stateAdditionalWithholding" placeholder="0.00"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- NEW YORK -->
+		<div class="accordion-group state-ny hidden accordion-last">
+			<div class="accordion-heading">
+				<span class="form_help"><a href="{% url 'help' %}#state-withholdings"><img src="{{STATIC_URL}}img/help_symbol.png" alt="Help"></a></span>
+				<a class="accordion-toggle collapsed disabled" data-toggle="collapse" data-parent="#accordion2" href="#collapseNY">
+					<h4 class="form_title">New York State Withholdings</h4>
+				</a>
+			</div>
+			<div id="collapseNY" class="accordion-body collapse">
+				<div class="accordion-inner">
+<!-- RESIDENCE -->
+					<div class="form-line">
+						<label for="ny_residenceCity">Residence</label>
+						<select name="ny_residenceCity" id="ny_residenceCity">
+							<option value="" selected="selected">Other</option>
+							<option value="Yonkers">Yonkers</option>
+							<option value="New York">New York City</option>
+						</select>
+					</div>
+<!-- WORK SITE -->
+					<div class="form-line">
+						<label for="ny_workSiteCity">Work Site</label>
+						<select name="ny_workSiteCity" id="ny_workSiteCity">
+							<option value="" selected="selected">Other</option>
+							<option value="Yonkers">Yonkers</option>
+						</select>
+					</div>
+<!-- RESIDENCE FILLING STATUS -->
+					<div class="form-line">
+						<label for="ny_residenceFilingStatus">Filling Status</label>
+						<select name="ny_residenceFilingStatus" id="ny_residenceFilingStatus" >
+							<option value="SingleOrHeadOfHousehold" selected="selected">Single</option>
+							<option value="Married">Married</option>
+							<option value="SingleOrHeadOfHousehold">Married, but Single Rate</option>
+							<option value="DoNotWithhold">Do Not Withhold</option>
+						</select>
+					</div>
+<!-- RESIDENCE EXEMPTIONS -->
+					<div class="form-line">
+						<label for="ny_residenceExemptions">NYC Allowances</label>
+						<input type="text" class="input_pre ny-residence" name="ny_residenceExemptions" id="ny_residenceExemptions" placeholder="0"/>
+					</div>
+<!-- RESIDENCE WHITEHOLDING -->
+					<div class="form-line">
+						<label for="ny_residenceAdditionalWithholding">Additional NYC Withholding</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" class="input_pre ny-residence" name="ny_residenceAdditionalWithholding" id="ny_residenceAdditionalWithholding" placeholder="0.00"/>
+						</div>
+					</div>
+<!-- 							<div class="form-line">
+						<label for="ny_workSiteFilingStatus">Work Site Filing Status</label>
+						<select name="ny_workSiteFilingStatus" id="ny_workSiteFilingStatus" class="ny-worksite">
+							<option value="SingleOrHeadOfHousehold" selected="selected">Single</option>
+							<option value="Married">Married</option>
+							<option value="SingleOrHeadOfHousehold">Married, but Single Rate</option>
+							<option value="DoNotWithhold">Do Not Withhold</option>
+						</select>
+					</div> -->
+<!-- 							<div class="form-line">
+						<label for="ny_workSiteExemptions">Work Site Allowances</label>
+						<input type="text" class="input_pre ny-worksite" name="ny_workSiteExemptions" id="ny_workSiteExemptions" placeholder="0"/>
+					</div> -->
+<!-- WORK SITE ADDITIONAL -->
+					<div class="form-line">
+						<label for="ny_workSiteAdditionalWithholding">Additional Yonkers Withholding</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" class="input_pre currency ny-worksite" name="ny_workSiteAdditionalWithholding" id="ny_workSiteAdditionalWithholding" placeholder="0.00"/>
+						</div>
+					</div>
+<!-- 						<div class="form-line">
+						<label for="ny_stateFilingStatus">Filling Status</label>
+						<select name="ny_stateFilingStatus" id="ny_stateFilingStatus">
+							<option value="SingleOrHeadOfHousehold" selected="selected">Single</option>
+							<option value="Married">Married</option>
+							<option value="SingleOrHeadOfHousehold">Married, but Single Rate</option>
+							<option value="DoNotWithhold">Do Not Withhold</option>
+						</select>
+					</div> -->
+<!-- STATE EXEMPTIONS -->
+					<div class="form-line">
+						<label for="ny_stateExemptions">Allowances</label>
+						<input type="text" class="input_pre" name="ny_stateExemptions" id="ny_stateExemptions" placeholder="0"/>
+					</div>
+<!-- ADDITIONAL WITHHOLDING -->
+					<div class="form-line">
+						<label for="ny_stateAdditionalWithholding">Additional State Withholding</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" class="input_pre currency" name="ny_stateAdditionalWithholding" id="ny_stateAdditionalWithholding" placeholder="0.00"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- NORTH CAROLINA -->
+		<div class="accordion-group state-nc hidden accordion-last">
+			<div class="accordion-heading">
+				<span class="form_help"><a href="{% url 'help' %}#state-withholdings"><img src="{{STATIC_URL}}img/help_symbol.png" alt="Help"></a></span>
+				<a class="accordion-toggle collapsed disabled" data-toggle="collapse" data-parent="#accordion2" href="#collapseNC">
+					<h4 class="form_title">North Carolina State Withholdings</h4>
+				</a>
+			</div>
+			<div id="collapseNC" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<div class="form-line">
+						<label for="nc_stateFilingStatus">Filing Status</label>
+						<select name="nc_stateFilingStatus" id="nc_stateFilingStatus">
+							<option value="Single" selected="selected">Single</option>
+							<option value="HeadOfHousehold">Head Of Household</option>
+							<option value="MarriedOrWidow">Married Or Widow(er)</option>
+							<option value="DoNotWithhold">Do Not Withhold</option>
+						</select>
+					</div>
+					<div class="form-line">
+						<label for="nc_stateExemptions">Total Allowances</label>
+						<input type="text" class="input_pre" name="nc_stateExemptions" id="nc_stateExemptions" placeholder="0"/>
+					</div>
+					<div class="form-line">
+						<label for="nc_stateAdditionalWithholding">Additional Withholdings</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" class="input_pre currency" name="nc_stateAdditionalWithholding" id="nc_stateAdditionalWithholding" placeholder="0"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- VIRGINIA -->
+		<div class="accordion-group state-va hidden accordion-last">
+			<div class="accordion-heading">
+				<span class="form_help"><a href="{% url 'help' %}#state-withholdings"><img src="{{STATIC_URL}}img/help_symbol.png" alt="Help"></a></span>
+				<a class="accordion-toggle collapsed disabled" data-toggle="collapse" data-parent="#accordion2" href="#collapseVA">
+					<h4 class="form_title">Virginia State Withholdings</h4>
+				</a>
+			</div>
+			<div id="collapseVA" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<div class="form-line">
+						<label for="va_stateFilingStatus">Filing Status</label>
+						<select name="va_stateFilingStatus" id="va_stateFilingStatus">
+							<option value="Regular" selected="selected">Regular</option>
+							<option value="DoNotWithhold">Do Not Withhold</option>
+						</select>
+					</div>
+					<div class="form-line">
+						<label for="va_stateExemptions">Total Exemptions</label>
+						<input type="text" class="input_pre" name="va_stateExemptions" id="va_stateExemptions" placeholder="0"/>
+					</div>
+					<div class="form-line">
+						<label for="va_stateAdditionalWithholding">Additional Withholding</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" class="input_pre currency" name="va_stateAdditionalWithholding" id="va_stateAdditionalWithholding" placeholder="0.00"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- WASHINGTON -->
+		<div class="accordion-group state-wa hidden accordion-last">
+			<div class="accordion-heading">
+				<span class="form_help"><a href="{% url 'help' %}#state-withholdings"><img src="{{STATIC_URL}}img/help_symbol.png" alt="Help"></a></span>
+				<a class="accordion-toggle collapsed disabled" data-toggle="collapse" data-parent="#accordion2" href="#collapseWA">
+					<h4 class="form_title">Washington State Withholdings</h4>
+				</a>
+			</div>
+			<div id="collapseWA" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<div class="form-line">
+						<label for="wa_workersCompRate">Workers' Comp Rate</label>
+						<div class="input-prepend">
+							<span class="add-on">$</span>
+							<input type="text" class="input_pre currency" name="wa_workersCompRate" id="wa_workersCompRate" placeholder="0.00" /> /hr
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="accordion-group"></div>
+	</div>
+	<!-- NON SUPPORTED -->
+	<div class="accordion hidden" id="not-supported">
+		<div class="accordion-group">
+			<div class="accordion-done">
+				<p>We're sorry, but our new paycheck calculator is not yet available in <strong id="not-supported-state-name">Florida.</strong></p>
+				<p>Choose another state or you can access the <a href="http://www.paycheckcity.com/cointuitonlinepayroll/netpayHRatesCalculator.asp?ID=ER" target="_blank">old calculator</a> for this state.</p>
+				<p>New states are being added all the time. Give us your email and we'll send you an update when your state is available</p>
+				<div class="not-supported-form">
+					<input type="email" name="not-supported-email" id="not-supported-email" placeholder="Email" />
+					<input type="button" class="btn_submit form-btn-small button-send-notsupported" value="Send" />
+				</div>
+				<p class="not-supported-thanks hidden"><strong>Thanks!</strong></p>
+			</div>
+		</div>
+	</div>
+<!-- <button class="btn btn-primary button-calculate">Calculate</button> -->
+</form>

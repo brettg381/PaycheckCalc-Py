@@ -1,0 +1,71 @@
+input.error{
+	margin-bottom: 0;
+}
+label.error{
+	width: auto !important;
+	right: auto;
+	top: auto;
+}
+
+.popup-header{
+	background: url('/img/back-top-popup.jpg') 0 0 repeat-x;
+	margin-bottom: 20px;
+
+}
+
+.main_popup {width:700px;margin:0 auto;}
+
+
+h2 {font-family: 'FSAlbert-Bold', Arial !important;font-weight:normal !important;}
+
+legend{
+	margin-bottom: 0;
+	border-bottom: 0;
+	font-size: 16px;
+	line-height: 2;
+	font-weight: bold;
+	font-family: 'FSAlbert-Bold', Arial !important;font-weight:normal !important;
+}
+
+legend + .control-group{
+	margin-top: 0;
+}
+
+textarea{
+	margin-bottom: 0;
+}
+.control-group{
+	margin-bottom: 0;
+}
+
+.message-wrapper{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.thanks-wrapper{
+	text-align: center;
+	margin-top: 100px;
+}
+.thanks-wrapper h2{
+	color: #666;
+	font-weight: normal;
+}
+.thanks-wrapper .button-close{
+	float: none;
+	margin-top: 20px;
+}
+
+.button-close {
+	         -o-transition: all 0.2s linear;
+	-webkit-transition: all 0.2s linear;
+	    -moz-transition: all 0.2s linear;
+		 transition: all 0.2s linear;
+	background: none repeat scroll 0 0 #999999;
+	border-color: #999999;
+	box-shadow: none;
+}
+.button-close:hover{
+	background: none repeat scroll 0 0 #777;
+	border-color: #777;
+}

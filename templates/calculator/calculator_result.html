@@ -1,0 +1,85 @@
+
+<script type="text/template" id="calculator-result-tpl">
+<div id="invoice">
+	<div class="inner">
+		<div class="header">
+			<div class="date">{% templatetag openvariable %}pay_date{% templatetag closevariable %}&nbsp;</div>
+			<div class="employee">{% templatetag openvariable %}employee{% templatetag closevariable %}&nbsp;</div>
+			<div class="pay">${% templatetag openvariable %}net_pay{% templatetag closevariable %}</div>
+		</div>
+
+		<div class="body">
+			<div class="table-wrapper">
+			<table border="0">
+				<tr>
+					<th class="first" width="70%">Gross Pay</th>
+					<th width="30%">Current</th>
+				</tr>
+				{% templatetag openvariable %}#hourly{% templatetag closevariable %}
+				<tr>
+				    <td class="first">Hourly</td>
+				    <td>$0.00</td>
+				</tr>
+				{% templatetag openvariable %}/hourly{% templatetag closevariable %}
+				{% templatetag openvariable %}#hours_worked{% templatetag closevariable %}
+				<tr>
+				    <td class="first">{% templatetag openvariable %}hours_worked{% templatetag closevariable %} hrs</span> <span>x</span> <span>$ {% templatetag openvariable %}pay_rate_hs{% templatetag closevariable %} /hr</td>
+				    <td>${% templatetag openvariable %}hours_total{% templatetag closevariable %}</td>
+				</tr>
+				{% templatetag openvariable %}/hours_worked{% templatetag closevariable %}
+				{% templatetag openvariable %}#salary{% templatetag closevariable %}
+				<tr>
+				    <td class="first">Salary</td>
+				    <td>${% templatetag openvariable %}salary{% templatetag closevariable %}</td>
+				</tr>
+				{% templatetag openvariable %}/salary{% templatetag closevariable %}
+				{% templatetag openvariable %}#ot_hours_worked{% templatetag closevariable %}
+				<tr>
+				    <td class="first">OT: {% templatetag openvariable %}ot_hours_worked{% templatetag closevariable %} hrs</span> <span>x</span><span>$ {% templatetag openvariable %}ot_pay_rate_hs{% templatetag closevariable %} /hr</td>
+				    <td>${% templatetag openvariable %}ot_total{% templatetag closevariable %}</td>
+				</tr>
+				{% templatetag openvariable %}/ot_hours_worked{% templatetag closevariable %}
+				{% templatetag openvariable %}#bonus{% templatetag closevariable %}
+				<tr>
+				    <td class="first">Bonus</td>
+				    <td>${% templatetag openvariable %}bonus{% templatetag closevariable %}</td>
+				</tr>
+				{% templatetag openvariable %}/bonus{% templatetag closevariable %}
+				{% templatetag openvariable %}#commission{% templatetag closevariable %}
+				<tr>
+				    <td class="first">Commission</td>
+				    <td>${% templatetag openvariable %}commission{% templatetag closevariable %}</td>
+				</tr>
+				{% templatetag openvariable %}/commission{% templatetag closevariable %}
+			</table>
+			
+			<table border="0">
+				<tr>
+					<th class="first" width="70%">Taxes withheld</th>
+					<th width="30%">&nbsp;</th>
+				</tr>
+				{% templatetag openvariable %}#taxes{% templatetag closevariable %}
+				<tr>
+				    <td class="first">{% templatetag openvariable %}name{% templatetag closevariable %}</td>
+				    <td>-${% templatetag openvariable %}amount{% templatetag closevariable %}</td>
+				</tr>
+				{% templatetag openvariable %}/taxes{% templatetag closevariable %}
+			</table>
+			
+			<table class="total" border="0">
+			  <tr>
+			    <td class="first" width="70%">Net pay this check</th>
+			    <td>${% templatetag openvariable %}net_pay{% templatetag closevariable %}</th>
+			  </tr>
+			</table>
+			
+			</div> <!-- table-wrapper -->		
+		</div>
+		<div class="bottom"></div>
+	</div>
+</div>
+{% templatetag openvariable %}#hourly{% templatetag closevariable %}
+<div class="backdrop"></div>
+{% templatetag openvariable %}/hourly{% templatetag closevariable %}
+
+</script>
